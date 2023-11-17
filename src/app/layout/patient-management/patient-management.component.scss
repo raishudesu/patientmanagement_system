@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto', sans-serif;
   list-style: none;
   text-decoration: none;
 }
@@ -201,8 +201,12 @@ padding: 10px;
 .btn {
 margin-left: 1px;
 padding: 5px;
-padding-left: 10px;
-padding-right: 10px;
+padding-left: 12px;
+padding-right: 12px;
+border-radius: 100px;
+background-color: #000;
+color: #ffffff;
+font-family: 'Rubik', sans-serif;
 }
 
 .btn1 {
@@ -255,17 +259,17 @@ margin-left: 10px;
 margin-right: 10px;
 }
 .Age {
-margin-top: 10px;
+margin-top: 2px;
 margin-left: 10px;
 margin-right: 10px;
 }
 .Admission {
-margin-top: 10px;
+margin-top: 2px;
 margin-left: 10px;
 margin-right: 10px;
 }
 .Discharged {
-margin-top: 10px;
+margin-top: 2px;
 margin-left: 10px;
 margin-right: 10px;
 }
