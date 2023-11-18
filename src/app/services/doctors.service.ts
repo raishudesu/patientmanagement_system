@@ -14,7 +14,7 @@ export class DoctorsService {
       name: 'Ronald',
       age: 18,
       sex: 'male',
-      specialist: '1993-02-23',
+      specialist: 'Cardiologists',
       dateHired: '2015-09-30',
     }
   ])
@@ -25,7 +25,7 @@ export class DoctorsService {
       name: 'Ronald',
       age: 18,
       sex: 'male',
-      specialist: '1993-02-23',
+      specialist: 'Cardiologists',
       dateHired: '2015-09-30',
     }
   ]
