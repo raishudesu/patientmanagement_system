@@ -1,3 +1,5 @@
+<!-- DOCTORS -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,8 @@
 <body>
   <div class="container">
     <table>
+
+      <!--up-->
         <tr>
           <th><h5>Name</h5></th>
           <th><h5>Age</h5></th>
@@ -15,90 +19,21 @@
           <th><h5>Specialist</h5></th>
           <th><h5>Date Hired</h5></th>
         </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
+        <tr *ngFor="let doctor of doctor">
+          <td> {{doctor.name}} </td>
+          <td> {{doctor.age}} </td>
+          <td> {{doctor.sex}} </td>
+          <td> {{doctor.specialist}} </td>
+          <td> {{doctor.dateHired}} </td>
           <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
           <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
           <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
         </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
-        <tr>
-          <td> Lebron James </td>
-          <td>40</td>
-          <td>Male</td>
-          <td>1993-02-23</td>
-          <td>2015-09-30</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
-        </tr>
+
       </table>
         <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form1">+</button>
 
-        <div class="modal fade" tabindex="-1" id="form1">
+        <form #f="ngForm" (ngSubmit)="onSubmit()"  class="modal fade" tabindex="-1" id="form1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -107,34 +42,39 @@
               </div>
               
               <div class="Name form-floating mb-3">
-                <input type="email" class="form-control" id="Name" placeholder="name@example.com">
+                <input ngModel name="name" type="email" class="form-control" id="Name" placeholder="name@example.com">
                 <label for="floatingInput">Name:</label>
               </div>
 
               <div class="Age form-floating mb-3">
-                <input type="email" class="form-control" id="Age" placeholder="name@example.com">
+                <input ngModel name="age" type="email" class="form-control" id="Age" placeholder="name@example.com">
                 <label for="floatingInput">Age:</label>
               </div>
 
+              <div class="PatientNo form-floating mb-3">
+                <input ngModel name="gender" type="text" class="form-control" id="Age" placeholder="name@example.com">
+                <label for="floatingInput">Sex:</label>
+              </div>
+
               <div class="Admission form-floating mb-3">
-                <input type="email" class="form-control" id="Specialist" placeholder="name@example.com">
+                <input ngModel name="specialist" type="email" class="form-control" id="Specialist" placeholder="name@example.com">
                 <label for="floatingInput">Specialist:</label>
               </div>
 
               <div class="Discharged form-floating mb-3">
-                <input type="email" class="form-control" id="hired" placeholder="name@example.com">
+                <input ngModel name="dateHired" type="email" class="form-control" id="hired" placeholder="name@example.com">
                 <label for="floatingInput">Date Hired:</label>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="cls btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="save btn-primary">Save</button>
+                <button type="submit" class="save btn-primary">Save</button>
               </div>
             </div>
           </div>
-        </div>
+      </form>
 
-        <!--DELETE MODAL-->
+<!--DELETE MODAL-->
 <div class="modal fade" tabindex="-1" id="delete">
   <div class="modal-dialog modal-dialog-centered ">
     <div class="modal-content">
