@@ -27,7 +27,7 @@ export class PatientManagementComponent {
   }
   onSubmit(){
     console.log(this.loginForm.value);
-    this.patientService.addSubject(this.loginForm.value.name, this.loginForm.value.age, this.loginForm.value.gender, this.loginForm.value.admissionDate, this.loginForm.value.dischargedDate)
+    this.patientService.addSubject(this.loginForm.value.name, this.loginForm.value.age, this.loginForm.value.gender, this.loginForm.value.patientNumber, this.loginForm.value.admissionDate, this.loginForm.value.dischargedDate)
     this.loginForm.reset()
   }
 }

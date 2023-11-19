@@ -15,7 +15,6 @@
     margin-top: 20px;
   }
   
-  
   body {
     background-color: transparent;
     
@@ -45,9 +44,9 @@
   .ag-courses-item_link {
     display: block;
     padding: 30px 20px;
-    background-color: blur;
-    backdrop-filter: blur(50px);
-    height: 190px;
+    background-color: transparent;
+    backdrop-filter: blur(100px);
+    height: 195px;
   
     overflow: hidden;
   
@@ -65,12 +64,10 @@
     -ms-transform: scale(10);
     transform: scale(8);
   }
-  .ag-courses-item_title {
+  .title {
     min-height: 87px;
     margin: 0 0 25px;
-  
     overflow: hidden;
-  
     font-weight: bold;
     font-size: 20px;
     color: #251616;
@@ -78,9 +75,9 @@
     z-index: 2;
     position: relative;
   }
-  .ag-courses-item_title:hover {
-    color: #000;
-    font-size: 40px;
+  .title:hover {
+    color: #d40505;
+    font-size: 30px;
   }
   .ag-courses-item_date-box {
     font-size: 25px;

@@ -48,26 +48,26 @@
 			
 			<!--register-->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-				<div class="modal-dialog">
+				<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 						<div class="modal-header">
 						<h1 class="modal-title fs-5" id="exampleModalLabel">Create account</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-								<div class="form-floating mb-3">
+								<div class="form-floating mb-2">
 										<input type="email" class="form-control" id="txtModalEmail" placeholder="name@example.com">
 										<label for="txtModalEmail">Email Address</label>
 									</div><br>
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="txtModalName" placeholder="name">
+									<div class="form-floating mb-2 mt-1">
+										<input type="text" class="form-control" id="name" placeholder="name">
 										<label for="txtModalName">Name</label>
 									</div>
-									<div class="form-floating mb-3">
+									<div class="form-floating mb-2">
 										<input type="password" class="form-control" id="txtModalPassword" placeholder="Password">
 										<label for="txtModalPassword">Password</label>
 									</div>
-									<div class="form-floating">
+									<div class="form-floating mb-2">
 										<input type="password" class="form-control" id="txtModalConfirmPassword" placeholder="Password">
 										<label for="txtModalConfirmPassword">Confirm Password</label>
 									</div>
@@ -93,7 +93,12 @@
 											</label>
 										</div>
 									</div>
+									
 								</div>
+								<div class="modal-footer">
+									<button type="button" class="cls" data-bs-dismiss="modal">Close</button>
+									<button type="button" class="save">Save</button>
+								  </div>
 						</div>
 				</div>
 			</div>

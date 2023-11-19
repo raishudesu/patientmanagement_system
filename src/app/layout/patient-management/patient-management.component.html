@@ -23,7 +23,7 @@
           <td> {{ patient.name}} </td>
           <td>{{ patient.age}}</td>
           <td>{{ patient.sex}}</td>
-          <td>212122</td>
+          <td>{{ patient.patientNumber }}</td>
           <td>{{ patient.admissionDate}}</td>
           <td>{{ patient.dischargedDate}}</td>
           <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
@@ -57,7 +57,7 @@
               </div>
 
               <div class="PatientNo form-floating mb-3">
-                <input type="email" class="form-control" id="Age" placeholder="name@example.com">
+                <input ngModel name="patientNumber" type="email" class="form-control" id="Age" placeholder="name@example.com">
                 <label for="floatingInput">Patient Number:</label>
               </div>
 
