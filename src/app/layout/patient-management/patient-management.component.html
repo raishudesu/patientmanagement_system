@@ -9,8 +9,8 @@
 </head>
 <body>
   <div class="container">
+    <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form"><h4>+</h4></button>
     <table>
-    
         <tr>
           <th><h5>Name</h5></th>
           <th><h5>Age</h5></th>
@@ -19,6 +19,7 @@
           <th><h5>Admission Date</h5></th>
           <th><h5>Discharge Date</h5></th>
         </tr>
+        
         <tr *ngFor="let patient of patients">
           <td> {{ patient.name}} </td>
           <td>{{ patient.age}}</td>
@@ -26,12 +27,11 @@
           <td>{{ patient.patientNumber }}</td>
           <td>{{ patient.admissionDate}}</td>
           <td>{{ patient.dischargedDate}}</td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
+          <td><button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button></td>
+          <td><button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button></td>
+          <td><button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
         </tr>
       </table>
-        <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form"><h4>+</h4></button>
 
         <form #f="ngForm" (ngSubmit)="onSubmit()"  class="modal fade" tabindex="-1" id="form">
           <div class="modal-dialog modal-dialog-centered">
@@ -51,7 +51,7 @@
                 <label for="floatingInput">Age:</label>
               </div>
 
-              <div class="PatientNo form-floating mb-3">
+              <div class="Sex form-floating mb-3">
                 <input ngModel name="gender" type="text" class="form-control" id="Age" placeholder="name@example.com">
                 <label for="floatingInput">Sex:</label>
               </div>
@@ -64,6 +64,11 @@
               <div class="Admission form-floating mb-3">
                 <input ngModel name="admissionDate" class="form-control" id="Admission" placeholder="name@example.com">
                 <label for="floatingInput">Admission Date:</label>
+              </div>
+
+              <div class="Appointment form-floating mb-3">
+                <input ngModel name="appointment" type="email" class="form-control" id="Appointment" placeholder="name@example.com">
+                <label for="floatingInput">Appointment</label>
               </div>
 
               <div class="Discharged form-floating mb-3">

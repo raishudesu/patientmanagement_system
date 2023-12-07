@@ -9,9 +9,8 @@
 </head>
 <body>
   <div class="container">
+    <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form1">+</button>
     <table>
-
-      <!--up-->
         <tr>
           <th><h5>Name</h5></th>
           <th><h5>Age</h5></th>
@@ -25,13 +24,12 @@
           <td> {{doctor.sex}} </td>
           <td> {{doctor.specialist}} </td>
           <td> {{doctor.dateHired}} </td>
-          <button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-          <button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button>
-          <button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
+          <td><button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button></td>
+          <td><button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button></td>
+          <td><button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
         </tr>
 
       </table>
-        <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form1">+</button>
 
         <form #f="ngForm" (ngSubmit)="onSubmit()"  class="modal fade" tabindex="-1" id="form1">
           <div class="modal-dialog modal-dialog-centered">
