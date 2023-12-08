@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientManagementComponent } from './patient-management/patient-management.component';
 import { DoctorsManagementComponent } from './doctors-management/doctors-management.component';
 import { SharedComponentModule } from './component/shared-component.module';
+import { UsersviewComponent } from './usersview/usersview.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedComponentModule } from './component/shared-component.module';
 @NgModule({
   declarations: [
     LayoutComponent,
+    UsersviewComponent,
 
   ],
   imports: [
