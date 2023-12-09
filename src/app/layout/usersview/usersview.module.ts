@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UsersviewComponent } from './usersview.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UsersviewComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    UsersviewModule
   ]
 })
 export class UsersviewModule { }

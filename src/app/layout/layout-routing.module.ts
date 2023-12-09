@@ -23,7 +23,7 @@ const routes : Routes = [
       {
         path: "patient-management",
         loadChildren: () => import('./patient-management/patient-management.module').then(mod => mod.PatientManagementModule),
-      }
+      },
     ]
   }
 ]

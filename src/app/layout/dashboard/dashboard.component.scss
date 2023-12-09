@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: transparent;
 }
 
 .card {
@@ -19,14 +19,8 @@ body {
   display: flex;
   max-width: 1200px;
   margin: 20px auto;
+  height: 500px;
  
-}
-
-#dashboard-content,
-#dashboard-appointments,
-#dashboard-image {
-  flex: 1;
-  margin-right: 20px;
 }
 
 #dashboard-content .card,
@@ -36,13 +30,13 @@ body {
 }
 
 #dashboard-header {
-  font-size: 24px;
+  font-size: 27px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 #appointments-header {
-  font-size: 18px;
+  font-size: 23px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -56,3 +50,134 @@ body {
 #appointments-list li {
   margin-bottom: 5px;
 }
+
+#card1-container{
+  display: flex;
+  max-width: 300px;
+  margin: 20px auto;
+  height: 500px;
+  margin-top: -229px;
+  margin-left:  270px;
+}
+#card1-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+  margin-left: 10px;
+}
+
+#card1-container{
+  display: flex;
+  max-width: 293px;
+  margin: 20px auto;
+  height: 500px;
+  margin-top: -229px;
+  margin-left:  270px;
+}
+#card1-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+  margin-left: 10px;
+}
+
+#card2-container{
+  display: flex;
+  max-width: 293px;
+  margin: 20px auto;
+  height: 500px;
+  margin-top: -520px;
+  margin-left:  573px;
+}
+#card2-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+  margin-left: 10px;
+}
+
+#card3-container{
+  display: flex;
+  max-width: 293px;
+  margin: 20px auto;
+  height: 500px;
+  margin-top: -520px;
+  margin-left:  876px;
+}
+#card3-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+  margin-left: 10px;
+}
+
+#card4-container{
+  display: flex;
+  max-width: 293px;
+  margin: 20px auto;
+  height: 500px;
+  margin-top: -520px;
+  margin-left:  1180px;
+}
+#card4-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+  margin-left: 10px;
+}
+
+.btn1 {
+  color: #ffffff;
+  background-color: #328d41;
+  padding: 1px;
+  border-radius: 8px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: -10px;
+  margin-right: -10px;
+  }
