@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="width: 100vw; height: 100vh; display: flex; justify-content: center; margin-top: 200px;">
   <div class="container">
     <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form"><h4>+</h4></button>
     <table>
@@ -18,6 +18,10 @@
           <th><h5>Patient No.</h5></th>
           <th><h5>Admission Date</h5></th>
           <th><h5>Discharge Date</h5></th>
+          <th><h5>Appointment</h5></th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
         
         <tr *ngFor="let patient of patients">
@@ -27,6 +31,7 @@
           <td>{{ patient.patientNumber }}</td>
           <td>{{ patient.admissionDate}}</td>
           <td>{{ patient.dischargedDate}}</td>
+          <td>Cardio</td>
           <td><button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button></td>
           <td><button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button></td>
           <td><button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>

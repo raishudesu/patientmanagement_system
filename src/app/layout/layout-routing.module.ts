@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
 import { RouterModule, Routes } from '@angular/router';
-import { DoctorsManagementModule } from './doctors-management/doctors-management.module';
+
 
 const routes : Routes = [
   {
@@ -23,6 +23,10 @@ const routes : Routes = [
       {
         path: "patient-management",
         loadChildren: () => import('./patient-management/patient-management.module').then(mod => mod.PatientManagementModule),
+      },
+      {
+        path: "usersview",
+        loadChildren: () => import('./usersview/usersview.module').then(mod => mod.UsersviewModule),
       },
     ]
   }
