@@ -2,15 +2,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body style="width: 100vw; height: 100vh; display: flex; justify-content: center; margin-top: 200px;">
-  <div class="container">
-    <button type="button" class="btn mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#form"><h4>+</h4></button>
-    <table>
+  </head>
+  <body
+    style="
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      margin-top: 200px;
+    "
+  >
+    <div class="container">
+      <button
+        type="button"
+        class="btn mt-0 mb-0"
+        data-bs-toggle="modal"
+        data-bs-target="#form"
+      >
+        <h4>+</h4>
+      </button>
+      <table>
         <tr>
           <th><h5>Name</h5></th>
           <th><h5>Age</h5></th>
@@ -23,176 +38,373 @@
           <th></th>
           <th></th>
         </tr>
-        
+
         <tr *ngFor="let patient of patients">
-          <td> {{ patient.name}} </td>
-          <td>{{ patient.age}}</td>
-          <td>{{ patient.sex}}</td>
-          <td>{{ patient.patientNumber }}</td>
-          <td>{{ patient.admissionDate}}</td>
-          <td>{{ patient.dischargedDate}}</td>
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.sex }}</td>
+          <td>{{ patient.patient_number }}</td>
+          <td>{{ patient.admission_date }}</td>
+          <td>{{ patient.discharged_date }}</td>
           <td>Cardio</td>
-          <td><button type="button" class="btn1 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#edit">Edit</button></td>
-          <td><button type="button" class="btn2 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#view">View</button></td>
-          <td><button type="button" class="btn3 mt-0 mb-0" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
+          <td>
+            <button
+              type="button"
+              class="btn1 mt-0 mb-0"
+              data-bs-toggle="modal"
+              data-bs-target="#edit"
+              (click)="setCurrentPatient(patient)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn2 mt-0 mb-0"
+              data-bs-toggle="modal"
+              data-bs-target="#view"
+              (click)="setCurrentPatient(patient)"
+            >
+              View
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn3 mt-0 mb-0"
+              data-bs-toggle="modal"
+              data-bs-target="#delete"
+              (click)="setPatientId(patient.idpatients)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </table>
 
-        <form #f="ngForm" (ngSubmit)="onSubmit()"  class="modal fade" tabindex="-1" id="form">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Patient's Form</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
+      <form
+        #f="ngForm"
+        (ngSubmit)="onSubmit()"
+        class="modal fade"
+        tabindex="-1"
+        id="form"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Patient's Form</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="Name form-floating mb-3">
+              <input
+                ngModel
+                name="name"
+                type="text"
+                class="form-control"
+                id="Name"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Name:</label>
+            </div>
+
+            <div class="Age form-floating mb-3">
+              <input
+                ngModel
+                name="age"
+                type="number"
+                class="form-control"
+                id="Age"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Age:</label>
+            </div>
+
+            <div class="Sex form-floating mb-3">
+              <input
+                ngModel
+                name="sex"
+                type="text"
+                class="form-control"
+                id="Age"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Sex:</label>
+            </div>
+
+            <div class="PatientNo form-floating mb-3">
+              <input
+                ngModel
+                name="patient_number"
+                type="number"
+                class="form-control"
+                id="Age"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Patient Number:</label>
+            </div>
+
+            <div class="Admission form-floating mb-3">
+              <input
+                [(ngModel)]="admissionDate"
+                type="datetime-local"
+                name="admission_date"
+                class="form-control"
+                id="Discharged"
+                placeholder="YYYY-MM-DDTHH:mm"
+              />
+              <label for="floatingInput">Admission Date:</label>
+            </div>
+
+            <!-- <div class="Appointment form-floating mb-3">
+              <input
+                ngModel
+                name="appointment_date"
+                type="email"
+                class="form-control"
+                id="Appointment"
+                placeholder="name@example.com"
+                type="datetime"
+              />
+              <label for="floatingInput">Appointment</label>
+            </div> -->
+            <div class="Discharged form-floating mb-3">
+              <input
+                [(ngModel)]="dischargedDate"
+                type="datetime-local"
+                name="discharged_date"
+                class="form-control"
+                id="Discharged"
+                placeholder="YYYY-MM-DDTHH:mm"
+              />
+              <label for="Discharged">Discharged Date:</label>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cls btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="save btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!--DELETE MODAL-->
+      <div class="modal fade" tabindex="-1" id="delete">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Confirm</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="Discharged">
+              <label class="delete"
+                ><h5>Are you sure want to Delete?</h5></label
+              >
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cls btn-secondary"
+                data-bs-dismiss="modal"
+                (click)="deletePatient()"
+              >
+                Yes
+              </button>
+              <button type="button" class="save btn-primary">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW MODAL -->
+      <div class="modal fade" tabindex="-1" id="view">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">View</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="Name">
+              <label>Name:</label>
+              {{ currentPatient.name }}
+            </div>
+
+            <div class="Age">
+              <label>Age:</label>
+              {{ currentPatient.age }}
+            </div>
+
+            <div class="Sex">
+              <label>Sex:</label>
+              {{ currentPatient.sex }}
+            </div>
+
+            <div class="PatientNo">
+              <label>Patient #:</label>
+              {{ currentPatient.patient_number }}
+            </div>
+
+            <div class="Admission">
+              <label>Admission Date:</label>
+              {{ currentPatient.admission_date }}
+            </div>
+
+            <div class="Discharged">
+              <label>Discharged Date:</label>
+              {{ currentPatient.discharged_date }}
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cls btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDIT MODAL -->
+      <div class="modal fade" tabindex="-1" id="edit">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Patient</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <form
+              #patientForm="ngForm"
+              (ngSubmit)="updatePatientSubmit()"
+              id="form"
+            >
               <div class="Name form-floating mb-3">
-                <input ngModel name="name" type="text" class="form-control" id="Name" placeholder="name@example.com">
+                <input
+                  [(ngModel)]="updatePatient.name"
+                  name="name"
+                  type="text"
+                  class="form-control"
+                  id="Name"
+                  placeholder="name@example.com"
+                />
                 <label for="floatingInput">Name:</label>
               </div>
 
               <div class="Age form-floating mb-3">
-                <input ngModel name="age" type="text" class="form-control" id="Age" placeholder="name@example.com">
+                <input
+                  [(ngModel)]="updatePatient.age"
+                  name="age"
+                  type="number"
+                  class="form-control"
+                  id="Age"
+                />
                 <label for="floatingInput">Age:</label>
               </div>
 
               <div class="Sex form-floating mb-3">
-                <input ngModel name="gender" type="text" class="form-control" id="Age" placeholder="name@example.com">
+                <input
+                  [(ngModel)]="updatePatient.sex"
+                  name="sex"
+                  type="text"
+                  class="form-control"
+                  id="Age"
+                />
                 <label for="floatingInput">Sex:</label>
               </div>
 
               <div class="PatientNo form-floating mb-3">
-                <input ngModel name="patientNumber" type="email" class="form-control" id="Age" placeholder="name@example.com">
+                <input
+                  [(ngModel)]="updatePatient.patient_number"
+                  name="patient_number"
+                  type="number"
+                  class="form-control"
+                  id="Age"
+                />
                 <label for="floatingInput">Patient Number:</label>
               </div>
 
               <div class="Admission form-floating mb-3">
-                <input ngModel name="admissionDate" class="form-control" id="Admission" placeholder="name@example.com">
+                <input
+                  [(ngModel)]="updatePatient.admission_date"
+                  type="datetime-local"
+                  name="admission_date"
+                  class="form-control"
+                  id="Discharged"
+                  placeholder="YYYY-MM-DDTHH:mm"
+                />
                 <label for="floatingInput">Admission Date:</label>
               </div>
 
-              <div class="Appointment form-floating mb-3">
-                <input ngModel name="appointment" type="email" class="form-control" id="Appointment" placeholder="name@example.com">
-                <label for="floatingInput">Appointment</label>
-              </div>
-
               <div class="Discharged form-floating mb-3">
-                <input ngModel name="dischargedDate" class="form-control" id="Discharged" placeholder="name@example.com">
-                <label for="floatingInput">Discharged Date:</label>
+                <input
+                  [(ngModel)]="updatePatient.discharged_date"
+                  type="datetime-local"
+                  name="discharged_date"
+                  class="form-control"
+                  id="Discharged"
+                  placeholder="YYYY-MM-DDTHH:mm"
+                />
+                <label for="Discharged">Discharged Date:</label>
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="cls btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="save btn-primary">Save</button>
+                <button
+                  type="button"
+                  class="cls btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="save btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Save
+                </button>
               </div>
-            </div>
+            </form>
           </div>
-        </form>
-
-<!--DELETE MODAL-->
-<div class="modal fade" tabindex="-1" id="delete">
-  <div class="modal-dialog modal-dialog-centered ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Confirm</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="Discharged">
-        <label class="delete"><h5>Are you sure want to Delete?</h5></label>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="cls btn-secondary" data-bs-dismiss="modal">Yes</button>
-        <button type="button" class="save btn-primary">No</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- VIEW MODAL -->
-<div class="modal fade" tabindex="-1" id="view">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">View</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="Name">
-        <label>Name:</label>
-      </div>
-
-      <div class="Age">
-        <label>Age:</label>
-      </div>
-
-      <div class="Sex">
-        <label>Sex:</label>
-      </div>
-      
-      
-      <div class="PatientNo">
-        <label>Patient #:</label>
-      </div>
-     
-
-      <div class="Admission">
-        <label>Admission Date:</label>
-      </div>
-
-      <div class="Discharged">
-        <label>Discharged Date:</label>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="cls btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- EDIT MODAL -->
-<div class="modal fade" tabindex="-1" id="edit">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Edit Profile</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="Name form-floating mb-3">
-        <input type="email" class="form-control" id="Name" placeholder="name@example.com">
-        <label for="floatingInput">Name:</label>
-      </div>
-
-      <div class="Age form-floating mb-3">
-        <input type="email" class="form-control" id="Age" placeholder="name@example.com">
-        <label for="floatingInput">Age:</label>
-      </div>
-      <div class="PatientNo form-floating mb-3">
-        <input type="email" class="form-control" id="Age" placeholder="name@example.com">
-        <label for="floatingInput">Patient #:</label>
-      </div>
-
-      <div class="Admission form-floating mb-3">
-        <input type="email" class="form-control" id="Admission" placeholder="name@example.com">
-        <label for="floatingInput">Admission Date:</label>
-      </div>
-
-      <div class="Discharged form-floating mb-3">
-        <input type="email" class="form-control" id="Discharged" placeholder="name@example.com">
-        <label for="floatingInput">Discharged Date:</label>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="cls btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="save btn-primary">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  </div>
-</body>
+  </body>
 </html>
-<BR>
+<BR />
