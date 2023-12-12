@@ -145,7 +145,16 @@
               />
               <label for="floatingInput">Patient Number:</label>
             </div>
-
+            <div class="Appointment form-floating mb-3">
+              <input
+                ngModel
+                name="appointment"
+                type="text"
+                class="form-control"
+                id="Appointment"
+              />
+              <label for="floatingInput">Appointment</label>
+            </div>
             <div class="Admission form-floating mb-3">
               <input
                 [(ngModel)]="admissionDate"
@@ -158,18 +167,6 @@
               <label for="floatingInput">Admission Date:</label>
             </div>
 
-            <!-- <div class="Appointment form-floating mb-3">
-              <input
-                ngModel
-                name="appointment_date"
-                type="email"
-                class="form-control"
-                id="Appointment"
-                placeholder="name@example.com"
-                type="datetime"
-              />
-              <label for="floatingInput">Appointment</label>
-            </div> -->
             <div class="Discharged form-floating mb-3">
               <input
                 [(ngModel)]="dischargedDate"
@@ -354,6 +351,17 @@
                   id="Age"
                 />
                 <label for="floatingInput">Patient Number:</label>
+              </div>
+
+              <div class="Appointment form-floating mb-3">
+                <input
+                  [(ngModel)]="updatePatient.appointment"
+                  name="appointment"
+                  type="text"
+                  class="form-control"
+                  id="Appointment"
+                />
+                <label for="floatingInput">Appointment</label>
               </div>
 
               <div class="Admission form-floating mb-3">

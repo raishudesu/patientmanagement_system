@@ -8,6 +8,8 @@
   <body>
     <div id="dashboard-container" style="margin-top: 100px">
       <div id="dashboard-content" class="card">
+        <h1 *ngIf="session.admin">Welcome {{ session.admin.username }}</h1>
+        <h1 *ngIf="session.user">Welcome {{ session.user.username }}</h1>
         <div id="dashboard-header">Patient Management System</div>
         <p>
           Welcome to the Patient Management System dashboard. This system helps
@@ -23,6 +25,16 @@
           unlock the potential of<br />
           seamless patient management.
         </p>
+        <div>
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#form"
+            *ngIf="session.user"
+          >
+            Book now!
+          </button>
+        </div>
       </div>
 
       <!-- <div id="dashboard-appointments" class="card">
@@ -37,6 +49,91 @@
      
     </div> -->
     </div>
+
+    <form
+      #f="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="modal fade"
+      tabindex="-1"
+      id="form"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Patient Booking Form</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="Name form-floating mb-3">
+            <input
+              ngModel
+              name="patient_name"
+              type="text"
+              class="form-control"
+              id="Name"
+            />
+            <label for="floatingInput">Patient name:</label>
+          </div>
+
+          <div class="Age form-floating mb-3">
+            <input
+              ngModel
+              name="patient_age"
+              type="number"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Patient age:</label>
+          </div>
+
+          <div class="Sex form-floating mb-3">
+            <input
+              ngModel
+              name="patient_sex"
+              type="text"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Patient sex:</label>
+          </div>
+
+          <div class="Appointment form-floating mb-3">
+            <input
+              ngModel
+              name="appointment"
+              type="email"
+              class="form-control"
+              id="Appointment"
+              placeholder="name@example.com"
+              type="datetime"
+            />
+            <label for="floatingInput">Appointment</label>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <div
       style="

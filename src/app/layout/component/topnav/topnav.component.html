@@ -16,12 +16,15 @@
 
       <ul class="navbar">
         <a routerLink="/dashboard">Dashboard</a>
-        <a routerLink="/patient-management">Patients</a>
-        <a routerLink="/doctors-management">Doctors</a>
-        <a routerLink="/users-management">Users</a>
-        <a routerLink="/bookings-management">Bookings</a>
-        <a routerLink="/usersview">Username</a>
+        <a routerLink="/patient-management" *ngIf="isAdmin">Patients</a>
+        <a routerLink="/doctors-management" *ngIf="isAdmin">Doctors</a>
+        <a routerLink="/users-management" *ngIf="isAdmin">Users</a>
+        <a routerLink="/bookings-management" *ngIf="isAdmin">Bookings</a>
+        <!-- <a routerLink="/usersview">Username</a> -->
       </ul>
+      <button class="btn btn-primary p-2" *ngIf="isLoggedIn" (click)="logout()">
+        Logout
+      </button>
     </header>
   </body>
 </html>
