@@ -1,0 +1,291 @@
+<body
+  style="
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  "
+>
+  <div class="container">
+    <button
+      type="button"
+      class="btn mt-0 mb-0"
+      data-bs-toggle="modal"
+      data-bs-target="#form"
+    >
+      <h4>+</h4>
+    </button>
+    <table>
+      <tr>
+        <th><h5>ID</h5></th>
+        <th><h5>Name</h5></th>
+        <th><h5>Email</h5></th>
+        <th><h5>Password</h5></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <tr *ngFor="let user of user">
+        <td>{{ user.idusers }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+
+        <td>
+          <button
+            type="button"
+            class="btn1 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#edit"
+            (click)="setCurrentUser(user)"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn2 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#view"
+            (click)="setCurrentUser(user)"
+          >
+            View
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn3 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+            (click)="setUserId(user.idusers)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <form
+      #f="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="modal fade"
+      tabindex="-1"
+      id="form"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Users' Form</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="Name form-floating mb-3">
+            <input
+              ngModel
+              name="username"
+              type="text"
+              class="form-control"
+              id="Name"
+            />
+            <label for="floatingInput">Name:</label>
+          </div>
+
+          <div class="Age form-floating mb-3">
+            <input
+              ngModel
+              name="email"
+              type="email"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Email:</label>
+          </div>
+
+          <div class="Sex form-floating mb-3">
+            <input
+              ngModel
+              name="password"
+              type="text"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Password:</label>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="save btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!--DELETE MODAL-->
+    <div class="modal fade" tabindex="-1" id="delete">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="Discharged">
+            <label class="delete"><h5>Are you sure want to Delete?</h5></label>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+              (click)="deleteUser()"
+            >
+              Yes
+            </button>
+            <button type="button" class="save btn-primary">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW MODAL -->
+    <div class="modal fade" tabindex="-1" id="view">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">View</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="Name">
+            <label>ID:</label>
+            {{ currentUser.idusers }}
+          </div>
+
+          <div class="Name">
+            <label>Username:</label>
+            {{ currentUser.username }}
+          </div>
+
+          <div class="Name">
+            <label>Email:</label>
+            {{ currentUser.email }}
+          </div>
+
+          <div class="Name">
+            <label>Password:</label>
+            {{ currentUser.password }}
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div class="modal fade" tabindex="-1" id="edit">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Patient</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <form #userForm="ngForm" (ngSubmit)="updateUserSubmit()" id="form">
+            <div class="Name form-floating mb-3">
+              <input
+                [(ngModel)]="updateUser.username"
+                name="username"
+                type="text"
+                class="form-control"
+                id="Name"
+              />
+              <label for="floatingInput">Name:</label>
+            </div>
+
+            <div class="Age form-floating mb-3">
+              <input
+                [(ngModel)]="updateUser.email"
+                name="email"
+                type="email"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Email:</label>
+            </div>
+
+            <div class="Sex form-floating mb-3">
+              <input
+                [(ngModel)]="updateUser.password"
+                name="password"
+                type="text"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Password:</label>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cls btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="save btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

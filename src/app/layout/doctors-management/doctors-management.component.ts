@@ -69,16 +69,6 @@ export class DoctorsManagementComponent {
 
     console.log(data);
     this.ngOnInit();
-
-    // console.log(this.loginForm.value);
-    // this.doctorsService.addSubject(
-    //   this.loginForm.value.name,
-    //   this.loginForm.value.age,
-    //   this.loginForm.value.gender,
-    //   this.loginForm.value.specialist,
-    //   this.loginForm.value.dateHired
-    // );
-    // this.loginForm.reset();
   }
   setDoctorId(id: number) {
     this.currentDoctorId = id;

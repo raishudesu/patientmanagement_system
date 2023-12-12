@@ -1,0 +1,418 @@
+<body
+  style="
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  "
+>
+  <div class="container">
+    <button
+      type="button"
+      class="btn mt-0 mb-0"
+      data-bs-toggle="modal"
+      data-bs-target="#form"
+    >
+      <h4>+</h4>
+    </button>
+    <table>
+      <tr>
+        <th><h5>ID</h5></th>
+        <th><h5>Booker ID</h5></th>
+        <th><h5>Patient Name</h5></th>
+        <th><h5>Patient Age</h5></th>
+        <th><h5>Patient Sex</h5></th>
+        <th><h5>Appointment</h5></th>
+        <th><h5>Confirmed</h5></th>
+        <th><h5>Created at</h5></th>
+        <th><h5>Booking date</h5></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <tr *ngFor="let booking of booking">
+        <td>{{ booking.idbookings }}</td>
+        <td>{{ booking.booker_id }}</td>
+        <td>{{ booking.patient_name }}</td>
+        <td>{{ booking.patient_age }}</td>
+        <td>{{ booking.patient_sex }}</td>
+        <td>{{ booking.appointment }}</td>
+        <td>{{ booking.is_confirmed }}</td>
+        <td>{{ booking.created_at }}</td>
+        <td>{{ booking.booking_date }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn1 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#edit"
+            (click)="setCurrentBooking(booking)"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn2 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#view"
+            (click)="setCurrentBooking(booking)"
+          >
+            View
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn3 mt-0 mb-0"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+            (click)="setBookingId(booking.idbookings)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <form
+      #f="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="modal fade"
+      tabindex="-1"
+      id="form"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Booking Form</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="Name form-floating mb-3">
+            <input
+              ngModel
+              name="booker_id"
+              type="number"
+              class="form-control"
+              id="Name"
+            />
+            <label for="floatingInput">Booker ID:</label>
+          </div>
+
+          <div class="Age form-floating mb-3">
+            <input
+              ngModel
+              name="patient_name"
+              type="text"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Patient name:</label>
+          </div>
+          <div class="Sex form-floating mb-3">
+            <input
+              ngModel
+              name="patient_age"
+              type="number"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Patient age:</label>
+          </div>
+          <div class="Sex form-floating mb-3">
+            <input
+              ngModel
+              name="patient_sex"
+              type="text"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Patient sex:</label>
+          </div>
+
+          <div class="PatientNo form-floating mb-3">
+            <input
+              ngModel
+              name="appointment"
+              type="text"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Appointment:</label>
+          </div>
+
+          <div class="PatientNo form-floating mb-3">
+            <input
+              ngModel
+              name="is_confirmed"
+              type="number"
+              max="1"
+              class="form-control"
+              id="Age"
+            />
+            <label for="floatingInput">Is Confirmed:</label>
+          </div>
+
+          <div class="Admission form-floating mb-3">
+            <input
+              [(ngModel)]="bookingDate"
+              type="datetime-local"
+              name="booking_date"
+              class="form-control"
+              id="Discharged"
+              placeholder="YYYY-MM-DDTHH:mm"
+            />
+            <label for="floatingInput">Booking date:</label>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="save btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!--DELETE MODAL-->
+    <div class="modal fade" tabindex="-1" id="delete">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="Discharged">
+            <label class="delete"><h5>Are you sure want to Delete?</h5></label>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+              (click)="deleteBooking()"
+            >
+              Yes
+            </button>
+            <button type="button" class="save btn-primary">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW MODAL -->
+    <div class="modal fade" tabindex="-1" id="view">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">View</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="ID">
+            <label>ID:</label>
+            {{ currentBooking.idbookings }}
+          </div>
+
+          <div class="BookerID">
+            <label>Booker ID:</label>
+            {{ currentBooking.booker_id }}
+          </div>
+
+          <div class="PatientName">
+            <label>Patient Name:</label>
+            {{ currentBooking.patient_name }}
+          </div>
+
+          <div class="PatientAge">
+            <label>Patient Age:</label>
+            {{ currentBooking.patient_age }}
+          </div>
+
+          <div class="PatientSex">
+            <label>Patient Sex:</label>
+            {{ currentBooking.patient_sex }}
+          </div>
+
+          <div class="Appointment">
+            <label>Appointment:</label>
+            {{ currentBooking.appointment }}
+          </div>
+
+          <div class="IsConfirmed">
+            <label>Is Confirmed:</label>
+            {{ currentBooking.is_confirmed }}
+          </div>
+
+          <div class="CreatedAt">
+            <label>Created At:</label>
+            {{ currentBooking.created_at }}
+          </div>
+
+          <div class="BookingDate">
+            <label>Booking Date:</label>
+            {{ currentBooking.booking_date }}
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cls btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div class="modal fade" tabindex="-1" id="edit">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Booking</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <form
+            #bookingForm="ngForm"
+            (ngSubmit)="updateBookingSubmit()"
+            id="form"
+          >
+            <div class="Name form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.booker_id"
+                name="booker_id"
+                type="number"
+                class="form-control"
+                id="Name"
+              />
+              <label for="floatingInput">Booker ID:</label>
+            </div>
+
+            <div class="Age form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.patient_name"
+                name="patient_name"
+                type="text"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Patient name:</label>
+            </div>
+
+            <div class="Sex form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.patient_age"
+                name="patient_age"
+                type="number"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Patient age:</label>
+            </div>
+
+            <div class="PatientNo form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.patient_sex"
+                name="patient_sex"
+                type="text"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Patient sex:</label>
+            </div>
+
+            <div class="PatientNo form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.appointment"
+                name="appointment"
+                type="text"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Appointment:</label>
+            </div>
+
+            <div class="PatientNo form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.is_confirmed"
+                name="is_confirmed"
+                type="number"
+                class="form-control"
+                id="Age"
+              />
+              <label for="floatingInput">Is Confirmed:</label>
+            </div>
+
+            <div class="Discharged form-floating mb-3">
+              <input
+                [(ngModel)]="updateBooking.booking_date"
+                type="datetime-local"
+                name="booking_date"
+                class="form-control"
+                id="Discharged"
+                placeholder="YYYY-MM-DDTHH:mm"
+              />
+              <label for="Discharged">Booking Date:</label>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cls btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="save btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
