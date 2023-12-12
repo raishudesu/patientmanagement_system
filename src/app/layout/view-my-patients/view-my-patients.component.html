@@ -1,0 +1,48 @@
+<body
+  style="
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  "
+>
+  <div class="container">
+    <table>
+      <tr>
+        <th><h5>ID</h5></th>
+        <th><h5>Name</h5></th>
+        <th><h5>Age</h5></th>
+        <th><h5>Sex</h5></th>
+        <th><h5>Patient No.</h5></th>
+        <th><h5>Admission Date</h5></th>
+        <th><h5>Discharge Date</h5></th>
+        <th><h5>Appointment</h5></th>
+        <th></th>
+      </tr>
+
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.idpatients }}</td>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.age }}</td>
+        <td>{{ patient.sex }}</td>
+        <td>{{ patient.patient_number }}</td>
+        <td>{{ patient.admission_date }}</td>
+        <td>{{ patient.discharged_date }}</td>
+        <td>{{ patient.appointment }}</td>
+
+        <td>
+          <button
+            type="button"
+            class="btn3 mt-0 mb-0"
+            (click)="dischargePatient(patient.idpatients)"
+            *ngIf="!patient.discharged_date"
+          >
+            Discharge
+          </button>
+          <p *ngIf="patient.discharged_date">Patient discharged</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>

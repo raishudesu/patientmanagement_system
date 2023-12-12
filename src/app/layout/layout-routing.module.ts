@@ -55,6 +55,13 @@ const routes: Routes = [
             (mod) => mod.BookingsManagementModule
           ),
       },
+      {
+        path: 'view-my-patients',
+        loadChildren: () =>
+          import('./view-my-patients/view-my-patients.module').then(
+            (mod) => mod.ViewMyPatientsModule
+          ),
+      },
     ],
   },
 ];

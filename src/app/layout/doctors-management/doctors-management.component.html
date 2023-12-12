@@ -27,6 +27,7 @@
       </button>
       <table>
         <tr>
+          <th><h5>ID</h5></th>
           <th><h5>Name</h5></th>
           <th><h5>Age</h5></th>
           <th><h5>Sex</h5></th>
@@ -35,6 +36,7 @@
           <th><h5>Actions</h5></th>
         </tr>
         <tr *ngFor="let doctor of doctor">
+          <td>{{ doctor.iddoctors }}</td>
           <td>{{ doctor.name }}</td>
           <td>{{ doctor.age }}</td>
           <td>{{ doctor.sex }}</td>

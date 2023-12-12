@@ -10,12 +10,17 @@ export class TopnavComponent {
   constructor(private router: Router) {}
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
+  isDoctor: boolean = false;
   ngOnInit() {
     const sessionString = localStorage.getItem('session');
     const session = JSON.parse(sessionString as string);
 
     if (session.isAdmin) {
       this.isAdmin = true;
+    }
+
+    if (session.isDoctor) {
+      this.isDoctor = true;
     }
 
     if (session.ok) {

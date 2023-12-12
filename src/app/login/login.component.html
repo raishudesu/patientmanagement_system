@@ -152,11 +152,11 @@
                         ngModel
                         type="password"
                         class="form-control"
-                        id="txtModalPassword"
+                        id="txtModalPasswordUser"
                         placeholder="Password"
                         name="password"
                       />
-                      <label for="txtModalPassword">Password</label>
+                      <label for="txtModalPasswordUser">Password</label>
                     </div>
                     <div class="form-floating mb-2">
                       <input
@@ -207,6 +207,72 @@
                   <form
                     #adminForm="ngForm"
                     (ngSubmit)="adminLogin()"
+                    class="modal-body"
+                  >
+                    <div class="form-floating mb-2 mt-1">
+                      <input
+                        ngModel
+                        type="text"
+                        class="form-control"
+                        placeholder="name"
+                        name="username"
+                      />
+                      <label for="txtModalName">Username</label>
+                    </div>
+
+                    <div class="form-floating mb-2">
+                      <input
+                        ngModel
+                        type="password"
+                        class="form-control"
+                        id="adminModal"
+                        placeholder="Password"
+                        name="password"
+                      />
+                      <label for="adminModal">Password</label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="cls" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button
+                        type="submit"
+                        class="save"
+                        data-bs-dismiss="modal"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOCTOR LOG IN -->
+            <div
+              class="modal fade"
+              id="doctorModal"
+              tabindex="-1"
+              aria-labelledby="doctorModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="doctorModalLabel">
+                      Doctor log in
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <form
+                    #doctorForm="ngForm"
+                    (ngSubmit)="doctorLogin()"
                     class="modal-body"
                   >
                     <div class="form-floating mb-2 mt-1">

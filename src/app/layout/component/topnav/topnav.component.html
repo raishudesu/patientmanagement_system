@@ -20,7 +20,7 @@
         <a routerLink="/doctors-management" *ngIf="isAdmin">Doctors</a>
         <a routerLink="/users-management" *ngIf="isAdmin">Users</a>
         <a routerLink="/bookings-management" *ngIf="isAdmin">Bookings</a>
-        <!-- <a routerLink="/usersview">Username</a> -->
+        <a routerLink="/view-my-patients" *ngIf="isDoctor">My Patients</a>
       </ul>
       <button class="btn btn-primary p-2" *ngIf="isLoggedIn" (click)="logout()">
         Logout

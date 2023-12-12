@@ -13,6 +13,7 @@ export class LoginComponent {
   @ViewChild('f') loginForm!: NgForm;
   @ViewChild('registerForm') registerForm!: NgForm;
   @ViewChild('adminForm') adminForm!: NgForm;
+  @ViewChild('doctorForm') doctorForm!: NgForm;
 
   ngOnInit() {
     const sessionString = localStorage.getItem('session');
@@ -100,6 +101,34 @@ export class LoginComponent {
         JSON.stringify({ isAdmin: true, ...user })
       );
       alert('Admin Login success');
+      this.router.navigateByUrl('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async doctorLogin() {
+    try {
+      console.log(this.doctorForm.value);
+      const res = await fetch('http://localhost:8000/api/doctors/login', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(this.doctorForm.value),
+      });
+
+      const user = await res.json();
+      console.log(user);
+
+      if (!user.ok) {
+        alert(user.error);
+        return;
+      }
+      localStorage.setItem(
+        'session',
+        JSON.stringify({ isDoctor: true, ...user })
+      );
+      alert('Doctor Login success');
       this.router.navigateByUrl('/dashboard');
     } catch (error) {
       console.log(error);
