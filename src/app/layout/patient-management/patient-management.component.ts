@@ -19,6 +19,8 @@ export class PatientManagementComponent {
     age: 0,
     sex: '',
     patient_number: 0,
+    appointment: '',
+    doctor: 0,
     admission_date: '',
     discharged_date: '',
   };
@@ -29,6 +31,8 @@ export class PatientManagementComponent {
     age: 0,
     sex: '',
     patient_number: 0,
+    appointment: '',
+    doctor: 0,
     admission_date: '',
     discharged_date: '',
   };
@@ -119,10 +123,6 @@ export class PatientManagementComponent {
       `http://localhost:8000/api/patients/${this.currentPatientId}`,
       {
         method: 'DELETE',
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(this.loginForm.value),
       }
     );
     const data = await res.json();

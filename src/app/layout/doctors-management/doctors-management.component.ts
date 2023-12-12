@@ -11,38 +11,114 @@ import { doctors } from 'src/app/models/doctors.model';
 })
 export class DoctorsManagementComponent {
   @ViewChild('f') loginForm!: NgForm;
+  @ViewChild('doctorForm') doctorForm!: NgForm;
   doctor!: doctors[];
-  doctorsSubscription!: Subscription;
+  currentDoctorId: number | null = null;
+  // doctorsSubscription!: Subscription;
+  currentDoctor: doctors = {
+    iddoctors: 0,
+    name: '',
+    age: 0,
+    sex: '',
+    specialist: '',
+    date_hired: '',
+  };
 
+  updateDoctor: doctors = {
+    iddoctors: 0,
+    name: '',
+    age: 0,
+    sex: '',
+    specialist: '',
+    date_hired: '',
+  };
+  dateHired: string = '';
   constructor(private doctorsService: DoctorsService) {}
 
   ngOnInit(): void {
-    this.doctorsSubscription = this.doctorsService.doctor.subscribe((data) => {
-      this.doctor = data;
-    });
+    // this.doctorsSubscription = this.doctorsService.doctor.subscribe((data) => {
+    //   this.doctor = data;
+    // });
 
     const getDoctors = async () => {
       const res = await fetch('http://localhost:8000/api/doctors');
       const data = await res.json();
 
+      this.doctor = data.doctors;
       console.log(data);
     };
 
     getDoctors();
   }
 
-  ngOnDestroy(): void {
-    this.doctorsSubscription.unsubscribe();
-  }
-  onSubmit() {
+  // ngOnDestroy(): void {
+  //   this.doctorsSubscription.unsubscribe();
+  // }
+  async onSubmit() {
     console.log(this.loginForm.value);
-    this.doctorsService.addSubject(
-      this.loginForm.value.name,
-      this.loginForm.value.age,
-      this.loginForm.value.gender,
-      this.loginForm.value.specialist,
-      this.loginForm.value.dateHired
+
+    const res = await fetch('http://localhost:8000/api/doctors', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(this.loginForm.value),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+    this.ngOnInit();
+
+    // console.log(this.loginForm.value);
+    // this.doctorsService.addSubject(
+    //   this.loginForm.value.name,
+    //   this.loginForm.value.age,
+    //   this.loginForm.value.gender,
+    //   this.loginForm.value.specialist,
+    //   this.loginForm.value.dateHired
+    // );
+    // this.loginForm.reset();
+  }
+  setDoctorId(id: number) {
+    this.currentDoctorId = id;
+
+    console.log(this.currentDoctorId);
+  }
+
+  setCurrentDoctor(doctor: doctors) {
+    this.currentDoctor = doctor;
+    this.updateDoctor = { ...this.currentDoctor };
+    this.setDoctorId(doctor.iddoctors);
+  }
+
+  async updateDoctorSubmit() {
+    console.log(this.doctorForm.value);
+    const res = await fetch(
+      `http://localhost:8000/api/doctors/${this.currentDoctorId}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(this.doctorForm.value),
+      }
     );
-    this.loginForm.reset();
+
+    const data = await res.json();
+    this.ngOnInit();
+    console.log(data);
+  }
+
+  async deleteDoctor() {
+    const res = await fetch(
+      `http://localhost:8000/api/doctors/${this.currentDoctorId}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    const data = await res.json();
+    this.ngOnInit();
+    console.log(data);
   }
 }
