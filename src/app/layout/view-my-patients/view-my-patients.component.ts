@@ -8,11 +8,27 @@ import { patient } from 'src/app/models/patients.model';
 })
 export class ViewMyPatientsComponent {
   patients!: patient[];
+  iddoctor!: number;
 
   ngOnInit() {
     const sessionString = localStorage.getItem('session');
     const session = JSON.parse(sessionString as string);
-    this.patients = session.doctor.patients;
+    this.iddoctor = session.doctor.iddoctors;
+    // this.patients = session.doctor.patients;
+    this.getDocPatients();
+  }
+
+  async getDocPatients() {
+    try {
+      const res = await fetch(
+        `http://localhost:8000/api/patients/doctor/${this.iddoctor}`
+      );
+      const patients = await res.json();
+      console.log(patients);
+      this.patients = patients.patients;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async dischargePatient(id: number) {

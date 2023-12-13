@@ -35,6 +35,8 @@
           <th><h5>Admission Date</h5></th>
           <th><h5>Discharge Date</h5></th>
           <th><h5>Appointment</h5></th>
+          <th><h5>Doctor ID</h5></th>
+          <th><h5>Doctor</h5></th>
           <th></th>
           <th></th>
           <th></th>
@@ -49,6 +51,9 @@
           <td>{{ patient.admission_date }}</td>
           <td>{{ patient.discharged_date }}</td>
           <td>{{ patient.appointment }}</td>
+          <td>{{ patient.doctor }}</td>
+          <td *ngIf="!patient.doctors" style="color: red">Not yet assigned</td>
+          <td *ngIf="patient.doctors">{{ patient.doctors.name }}</td>
           <td>
             <button
               type="button"

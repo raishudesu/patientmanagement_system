@@ -23,6 +23,14 @@ export class PatientManagementComponent {
     doctor: 0,
     admission_date: '',
     discharged_date: '',
+    doctors: {
+      iddoctors: 0,
+      name: '',
+      age: 0,
+      sex: '',
+      specialist: '',
+      date_hired: '',
+    },
   };
 
   updatePatient: patient = {
@@ -35,6 +43,14 @@ export class PatientManagementComponent {
     doctor: 0,
     admission_date: '',
     discharged_date: '',
+    doctors: {
+      iddoctors: 0,
+      name: '',
+      age: 0,
+      sex: '',
+      specialist: '',
+      date_hired: '',
+    },
   };
   dischargedDate: string = '';
   admissionDate: string = '';

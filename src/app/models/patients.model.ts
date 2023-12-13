@@ -1,3 +1,5 @@
+import { doctors } from './doctors.model';
+
 export interface patient {
   idpatients: number;
   name: string;
@@ -8,4 +10,5 @@ export interface patient {
   doctor: number;
   admission_date: string;
   discharged_date: string;
+  doctors: doctors;
 }
