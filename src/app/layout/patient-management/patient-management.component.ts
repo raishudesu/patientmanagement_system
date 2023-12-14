@@ -118,6 +118,7 @@ export class PatientManagementComponent {
   }
 
   async updatePatientSubmit() {
+    console.log(this.patientForm.value);
     const res = await fetch(
       `http://localhost:8000/api/patients/${this.currentPatientId}`,
       {
