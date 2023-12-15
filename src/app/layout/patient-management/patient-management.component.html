@@ -25,6 +25,18 @@
       >
         <h4>+</h4>
       </button>
+
+      <div class="form-group">
+        <label for="searchInput">Search Patients by Patient Number</label>
+        <input
+          type="number"
+          class="p-2 mb-2 form-control"
+          id="searchInput"
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+          placeholder="Search patients"
+        />
+      </div>
       <table>
         <tr>
           <th><h5>ID</h5></th>
@@ -42,7 +54,7 @@
           <th></th>
         </tr>
 
-        <tr *ngFor="let patient of patients">
+        <tr *ngFor="let patient of filteredPatients">
           <td>{{ patient.idpatients }}</td>
           <td>{{ patient.name }}</td>
           <td>{{ patient.age }}</td>

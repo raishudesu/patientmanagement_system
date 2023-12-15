@@ -56,7 +56,12 @@ export class PatientManagementComponent {
   admissionDate: string = '';
   patientSubscription!: Subscription;
   currentPatientId: number | null = null;
-  constructor(private patientService: PatientService) {}
+
+  filteredPatients: patient[] = [];
+  searchTerm: string = '';
+  constructor(private patientService: PatientService) {
+    this.filteredPatients = this.patients;
+  }
 
   ngOnInit(): void {
     // this.patientSubscription = this.patientService.patients.subscribe(
@@ -71,6 +76,7 @@ export class PatientManagementComponent {
 
       console.log(data);
       this.patients = data.patients;
+      this.filteredPatients = this.patients;
     };
 
     getPatients();
@@ -79,6 +85,17 @@ export class PatientManagementComponent {
   // ngOnDestroy(): void {
   //   this.patientSubscription.unsubscribe();
   // }
+  onSearch(): void {
+    this.filteredPatients = this.searchTerm
+      ? this.patients.filter((patient) =>
+          patient.patient_number
+            .toString()
+            .toLowerCase()
+            .includes(this.searchTerm.toString().toLowerCase())
+        )
+      : this.patients;
+  }
+
   async onSubmit() {
     console.log(this.loginForm.value);
 
