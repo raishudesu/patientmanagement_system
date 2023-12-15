@@ -11,6 +11,8 @@ export class TopnavComponent {
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
   isDoctor: boolean = false;
+  isUser: boolean = false;
+
   ngOnInit() {
     const sessionString = localStorage.getItem('session');
     const session = JSON.parse(sessionString as string);
@@ -25,6 +27,10 @@ export class TopnavComponent {
 
     if (session.ok) {
       this.isLoggedIn = true;
+    }
+
+    if (this.isAdmin === false && this.isDoctor === false) {
+      this.isUser = true;
     }
   }
 
