@@ -96,6 +96,14 @@ export class PatientManagementComponent {
       : this.patients;
   }
 
+  // onSearch(): void {
+  //   this.filteredPatients = this.searchTerm
+  //     ? this.patients.filter(
+  //         (patient) => patient.patient_number === Number(this.searchTerm)
+  //       )
+  //     : this.patients;
+  // }
+
   async onSubmit() {
     console.log(this.loginForm.value);
 
