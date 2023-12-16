@@ -105,7 +105,27 @@ export class PatientManagementComponent {
   // }
 
   async onSubmit() {
+    function generatePatientNumber(existingNumbers: number[]): number {
+      const MAX_PATIENT_NUMBER = 2147483647;
+      let newPatientNumber: number;
+
+      do {
+        newPatientNumber = Math.floor(Math.random() * MAX_PATIENT_NUMBER) + 1;
+      } while (existingNumbers.includes(newPatientNumber));
+
+      return newPatientNumber;
+    }
+
+    // Usage example:
+    const existingPatientNumbers = this.patients.map(
+      (patient) => patient.patient_number
+    );
+
     console.log(this.loginForm.value);
+    this.loginForm.value.patient_number = generatePatientNumber(
+      existingPatientNumbers
+    );
+    console.log(this.loginForm.value.patient_number);
 
     const res = await fetch('http://localhost:8000/api/patients', {
       method: 'POST',
